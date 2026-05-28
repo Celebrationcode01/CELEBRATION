@@ -239,45 +239,34 @@ function FeaturesSection() {
       </motion.p>
 
       <div className="mt-14 grid md:grid-cols-3 gap-5">
-        {/* Bloque de Páginas Web Adaptado: Grande en Compu, Proporcional en Cel */}
+        {/* CORREGIDO: Bloque de Páginas Web con la foto img68.png mucho más grande y expandida */}
         <motion.div 
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="md:col-span-2 bg-gradient-card rounded-3xl shadow-card relative overflow-hidden text-left group flex flex-col sm:block"
+          className="md:col-span-2 bg-gradient-card rounded-3xl shadow-card relative overflow-hidden min-h-[460px] flex flex-col justify-between text-left group"
         >
-          {/* 
-              CAMBIO: Contenedor de imagen modificado.
-              - En celular (por defecto): Se alinea arriba, ocupa todo el ancho (`w-full`) y se ajusta a la proporción natural (`aspect-auto`). El alto es automático. 
-              - En computadora (`sm:`): Vuelve a ser absoluto a la izquierda, ocupa el 48% del ancho y el 100% del alto, expandiéndose.
-          */}
-          <div className="sm:absolute left-0 top-0 bottom-0 w-full sm:w-[48%] h-auto sm:h-full overflow-hidden">
+          {/* AQUÍ EL CAMBIO: La imagen ahora abarca toda la mitad izquierda del cuadro, de arriba a abajo */}
+          <div className="absolute left-0 top-0 bottom-0 w-full sm:w-[48%] h-[240px] sm:h-full overflow-hidden hidden sm:block">
             <img 
               src={phoneBrainDump} 
               alt="Showcase interactivo" 
-              className="w-full h-auto sm:h-full sm:object-cover object-center transition-transform duration-700 group-hover:scale-105" 
+              className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" 
               loading="lazy" 
             />
-            {/* Degradado adaptado para móvil (vertical) y computadora (horizontal) */}
-            <div className="absolute inset-0 bg-gradient-to-b sm:bg-gradient-to-r from-transparent to-transparent to-[bg-gradient-card]" />
+            {/* Degradado suave para que la foto se funde elegantemente con el fondo de la tarjeta */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-transparent sm:to-[bg-gradient-card]" />
           </div>
           
-          {/* 
-              CAMBIO: Contenedor de contenido modificado.
-              - En celular (por defecto): Toma el ancho completo (`w-full`) y usa margen superior automático para separarse de la foto arriba (`mt-10`).
-              - En computadora (`sm:`): Se alinea a la derecha, ocupa el 48% y usa relleno (`p-8 md:p-10`) para espaciarse.
-          */}
-          <div className="p-8 md:p-10 flex flex-col justify-between h-full relative z-10 w-full sm:w-auto sm:ml-auto">
-            <div className="text-[10px] bg-white/70 text-ink/80 rounded-full px-3 py-1 w-fit font-medium tracking-wider uppercase backdrop-blur-sm mb-10 sm:mb-0">
+          {/* Contenido de la tarjeta */}
+          <div className="p-8 md:p-10 flex flex-col justify-between h-full relative z-10">
+            <div className="text-[10px] bg-white/70 text-ink/80 rounded-full px-3 py-1 w-fit font-medium tracking-wider uppercase backdrop-blur-sm">
               📍 Funcionalidades Comerciales
             </div>
 
-            {/* CAMBIO: Contenedor interno modificado. 
-                - En celular (por defecto): Alineado normal.
-                - En computadora (`sm:`): Alineado a la derecha, con el ancho que le corresponde (`w-[48%]`).
-            */}
-            <div className="sm:w-[48%] flex flex-col justify-center">
+            {/* Texto alineado a la derecha en pantallas grandes para no tapar la gran foto */}
+            <div className="sm:ml-auto sm:w-[48%] mt-36 sm:mt-0 flex flex-col justify-center">
               <h3 className="serif text-3xl md:text-4xl text-ink leading-tight">
                 Páginas web<br />inmersivas y<br />de alta gama.
               </h3>
@@ -302,8 +291,88 @@ function FeaturesSection() {
           </div>
         </motion.div>
 
-        {/* ... (El resto del código de `FeaturesSection` permanece igual que antes) ... */}
+        {/* Bloque Invitaciones Digitales de Lujo */}
+        <motion.a 
+          href="https://celebrationcode01.github.io/BodaEmilianoyEmilia/"
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="rounded-3xl shadow-card relative overflow-hidden min-h-[460px] flex flex-col justify-between group block cursor-pointer"
+        >
+          <img 
+            src={womanButterflies} 
+            alt="Demo Invitación Boda" 
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+            loading="lazy" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40" />
+          
+          <h3 className="serif text-2xl text-white relative p-7 text-left leading-tight drop-shadow-sm">
+             <br />
+          </h3>
 
+          <div className="absolute bottom-5 right-5 w-9 h-9 rounded-full bg-white/25 backdrop-blur-md border border-white/30 flex items-center justify-center text-white transition-all group-hover:bg-white group-hover:text-black shadow-sm">
+            <ArrowRight size={16} />
+          </div>
+        </motion.a>
+
+        {/* Tarjeta de Confirmación de Invitados */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={scaleIn}
+          className="bg-gradient-card rounded-3xl p-7 shadow-card relative overflow-hidden min-h-[280px] flex flex-col justify-between"
+        >
+          <div className="flex items-end gap-3 mt-4">
+            <div className="text-[10px] text-ink/60 absolute top-5 left-5 bg-white/70 rounded-full px-3 py-1">👑 +95% de confirmaciones a tiempo</div>
+            <div className="flex items-end gap-2 mt-12">
+              <motion.div initial={{ height: 0 }} whileInView={{ height: 64 }} transition={{ duration: 0.6, delay: 0.1 }} className="w-12 rounded-md bg-[oklch(0.85_0.05_290)]" />
+              <motion.div initial={{ height: 0 }} whileInView={{ height: 96 }} transition={{ duration: 0.6, delay: 0.3 }} className="w-12 rounded-md bg-[oklch(0.8_0.08_280)]" />
+              <motion.div initial={{ height: 0 }} whileInView={{ height: 128 }} transition={{ duration: 0.6, delay: 0.5 }} className="w-12 rounded-md bg-gradient-to-t from-[oklch(0.55_0.2_280)] to-[oklch(0.75_0.15_290)]" />
+            </div>
+          </div>
+          <h3 className="serif text-xl text-ink mt-3 text-left">Sistemas de confirmación<br />y gestión de invitados</h3>
+        </motion.div>
+
+        {/* Tarjeta Animación y Detalle */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={scaleIn}
+          className="bg-gradient-card rounded-3xl p-7 shadow-card relative overflow-hidden min-h-[280px] flex flex-col items-center justify-center text-center"
+        >
+          <div className="w-28 h-28 rounded-full bg-gradient-orb blur-sm animate-pulse" />
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none mt-[-3rem]">
+            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-pink-300 via-purple-400 to-blue-400 blur-md opacity-80" />
+          </div>
+          <h3 className="serif text-xl text-ink mt-4 relative">Cuidando cada píxel,<br />animación y detalle...</h3>
+        </motion.div>
+
+        {/* Tarjeta Menús y Catálogos QR */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={scaleIn}
+          className="bg-gradient-card rounded-3xl p-6 shadow-card min-h-[280px] flex flex-col justify-end text-left"
+        >
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2 text-sm text-ink">
+              <span className="w-5 h-5 rounded-full bg-gradient-to-br from-purple-400 to-blue-400" />
+              Menús y Catálogos QR
+            </div>
+            <span className="text-[10px] bg-[oklch(0.55_0.2_280)] text-white px-2 py-1 rounded-full">Premium</span>
+          </div>
+          <div className="bg-white/70 rounded-xl px-4 py-3 text-sm text-ink shadow-sm">
+            Experiencias interactivas para el sector restaurantero y boutiques con diseño selecto.
+          </div>
+          <div className="mt-2 bg-white/40 rounded-xl h-8" />
+        </motion.div>
       </div>
     </section>
   );
