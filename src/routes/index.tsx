@@ -239,7 +239,7 @@ function FeaturesSection() {
       </motion.p>
 
       <div className="mt-14 grid md:grid-cols-3 gap-5">
-        {/* CORREGIDO: Bloque de Páginas Web con la foto img68.png mucho más grande y expandida */}
+        {/* Bloque de Páginas Web Adaptado para Celular y Computadora */}
         <motion.div 
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -247,16 +247,16 @@ function FeaturesSection() {
           transition={{ duration: 0.7 }}
           className="md:col-span-2 bg-gradient-card rounded-3xl shadow-card relative overflow-hidden min-h-[460px] flex flex-col justify-between text-left group"
         >
-          {/* AQUÍ EL CAMBIO: La imagen ahora abarca toda la mitad izquierda del cuadro, de arriba a abajo */}
-          <div className="absolute left-0 top-0 bottom-0 w-full sm:w-[48%] h-[240px] sm:h-full overflow-hidden hidden sm:block">
+          {/* CAMBIO: Eliminado 'hidden sm:block'. Ahora en cel mide h-[200px] relativo arriba, y en compu se vuelve absoluto a la izquierda */}
+          <div className="relative sm:absolute left-0 top-0 bottom-0 w-full sm:w-[48%] h-[200px] sm:h-full overflow-hidden">
             <img 
               src={phoneBrainDump} 
               alt="Showcase interactivo" 
               className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" 
               loading="lazy" 
             />
-            {/* Degradado suave para que la foto se funda elegantemente con el fondo de la tarjeta */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-transparent sm:to-[bg-gradient-card]" />
+            {/* Degradado adaptado para que se funda bien en vertical (móvil) y horizontal (compu) */}
+            <div className="absolute inset-0 bg-gradient-to-b sm:bg-gradient-to-r from-transparent to-transparent to-[bg-gradient-card]" />
           </div>
           
           {/* Contenido de la tarjeta */}
@@ -265,8 +265,8 @@ function FeaturesSection() {
               📍 Funcionalidades Comerciales
             </div>
 
-            {/* Texto alineado a la derecha en pantallas grandes para no tapar la gran foto */}
-            <div className="sm:ml-auto sm:w-[48%] mt-36 sm:mt-0 flex flex-col justify-center">
+            {/* CAMBIO: Se quitó el 'mt-36' fijo que empujaba el texto hacia abajo en cel, ahora usa margen normal en móvil */}
+            <div className="sm:ml-auto sm:w-[48%] mt-6 sm:mt-0 flex flex-col justify-center">
               <h3 className="serif text-3xl md:text-4xl text-ink leading-tight">
                 Páginas web<br />inmersivas y<br />de alta gama.
               </h3>
@@ -312,7 +312,6 @@ function FeaturesSection() {
           
           <h3 className="serif text-2xl text-white relative p-7 text-left leading-tight drop-shadow-sm">
              <br />
-            
           </h3>
 
           <div className="absolute bottom-5 right-5 w-9 h-9 rounded-full bg-white/25 backdrop-blur-md border border-white/30 flex items-center justify-center text-white transition-all group-hover:bg-white group-hover:text-black shadow-sm">
